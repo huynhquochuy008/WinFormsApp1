@@ -32,6 +32,7 @@ namespace WinFormsApp1
             txt.Write("Pass: " + tbPass.Text + '\n');
             txt.Write("Phone: " + tbPhone.Text + '\n');
             txt.Write("Email: " + tbEmail.Text + '\n');
+            txt.Write("Location: " + tbLocation.Text + "\n");
             txt.Close();
 
             Home home = new Home();

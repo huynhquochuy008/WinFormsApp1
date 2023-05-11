@@ -98,13 +98,10 @@
             label18 = new Label();
             tabPage3 = new TabPage();
             tableLayoutPanel24 = new TableLayoutPanel();
-            panel25 = new Panel();
-            label86 = new Label();
             panel23 = new Panel();
-            button32 = new Button();
-            textBox9 = new TextBox();
-            panel24 = new Panel();
-            label85 = new Label();
+            btnSend = new Button();
+            tbMessage = new TextBox();
+            lbMessage = new ListBox();
             tableLayoutPanel23 = new TableLayoutPanel();
             panel20 = new Panel();
             pictureBox37 = new PictureBox();
@@ -127,10 +124,10 @@
             label33 = new Label();
             pictureBox20 = new PictureBox();
             tableLayoutPanel12 = new TableLayoutPanel();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            tbMail = new TextBox();
+            tbLocation = new TextBox();
+            tbPhone = new TextBox();
+            tbName = new TextBox();
             button17 = new Button();
             label34 = new Label();
             tabControl2 = new TabControl();
@@ -262,6 +259,7 @@
             tableLayoutPanel22 = new TableLayoutPanel();
             label80 = new Label();
             label81 = new Label();
+            contextMenuStrip1 = new ContextMenuStrip(components);
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
@@ -293,9 +291,7 @@
             panel6.SuspendLayout();
             tabPage3.SuspendLayout();
             tableLayoutPanel24.SuspendLayout();
-            panel25.SuspendLayout();
             panel23.SuspendLayout();
-            panel24.SuspendLayout();
             tableLayoutPanel23.SuspendLayout();
             panel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox37).BeginInit();
@@ -549,13 +545,13 @@
             tabControl1.Controls.Add(tabPage4);
             tabControl1.ImageList = imageList1;
             tabControl1.ItemSize = new Size(120, 50);
-            tabControl1.Location = new Point(343, 33);
+            tabControl1.Location = new Point(330, 3);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(495, 724);
             tabControl1.SizeMode = TabSizeMode.Fixed;
             tabControl1.TabIndex = 2;
-            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            tabControl1.SelectedIndexChanged += tabPage4_Click;
             // 
             // tabPage2
             // 
@@ -1245,86 +1241,54 @@
             // 
             tableLayoutPanel24.ColumnCount = 1;
             tableLayoutPanel24.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel24.Controls.Add(panel25, 0, 2);
             tableLayoutPanel24.Controls.Add(panel23, 0, 0);
-            tableLayoutPanel24.Controls.Add(panel24, 0, 1);
+            tableLayoutPanel24.Controls.Add(lbMessage, 0, 1);
             tableLayoutPanel24.Location = new Point(0, 199);
             tableLayoutPanel24.Name = "tableLayoutPanel24";
-            tableLayoutPanel24.RowCount = 3;
-            tableLayoutPanel24.RowStyles.Add(new RowStyle(SizeType.Percent, 47.1830978F));
-            tableLayoutPanel24.RowStyles.Add(new RowStyle(SizeType.Percent, 52.8169022F));
-            tableLayoutPanel24.RowStyles.Add(new RowStyle(SizeType.Absolute, 316F));
+            tableLayoutPanel24.RowCount = 2;
+            tableLayoutPanel24.RowStyles.Add(new RowStyle(SizeType.Percent, 15.4566746F));
+            tableLayoutPanel24.RowStyles.Add(new RowStyle(SizeType.Percent, 84.54333F));
             tableLayoutPanel24.Size = new Size(487, 467);
             tableLayoutPanel24.TabIndex = 7;
             // 
-            // panel25
-            // 
-            panel25.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panel25.Controls.Add(label86);
-            panel25.Location = new Point(3, 153);
-            panel25.Name = "panel25";
-            panel25.RightToLeft = RightToLeft.No;
-            panel25.Size = new Size(481, 61);
-            panel25.TabIndex = 2;
-            // 
-            // label86
-            // 
-            label86.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label86.AutoSize = true;
-            label86.ForeColor = Color.OliveDrab;
-            label86.Location = new Point(359, 10);
-            label86.Name = "label86";
-            label86.Size = new Size(94, 28);
-            label86.TabIndex = 0;
-            label86.Text = "Xin chào";
-            // 
             // panel23
             // 
-            panel23.Controls.Add(button32);
-            panel23.Controls.Add(textBox9);
+            panel23.Controls.Add(btnSend);
+            panel23.Controls.Add(tbMessage);
             panel23.Dock = DockStyle.Fill;
             panel23.Location = new Point(3, 3);
             panel23.Name = "panel23";
-            panel23.Size = new Size(481, 65);
+            panel23.Size = new Size(481, 66);
             panel23.TabIndex = 0;
             // 
-            // button32
+            // btnSend
             // 
-            button32.BackgroundImage = (Image)resources.GetObject("button32.BackgroundImage");
-            button32.BackgroundImageLayout = ImageLayout.Stretch;
-            button32.Location = new Point(433, 11);
-            button32.Name = "button32";
-            button32.Size = new Size(41, 51);
-            button32.TabIndex = 1;
-            button32.UseVisualStyleBackColor = true;
+            btnSend.BackgroundImage = (Image)resources.GetObject("btnSend.BackgroundImage");
+            btnSend.BackgroundImageLayout = ImageLayout.Stretch;
+            btnSend.Location = new Point(433, 11);
+            btnSend.Name = "btnSend";
+            btnSend.Size = new Size(41, 51);
+            btnSend.TabIndex = 1;
+            btnSend.UseVisualStyleBackColor = true;
+            btnSend.Click += btnSend_Click;
             // 
-            // textBox9
+            // tbMessage
             // 
-            textBox9.Location = new Point(6, 11);
-            textBox9.Multiline = true;
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(421, 51);
-            textBox9.TabIndex = 0;
-            textBox9.Text = "Nói gì đi";
+            tbMessage.Location = new Point(6, 11);
+            tbMessage.Multiline = true;
+            tbMessage.Name = "tbMessage";
+            tbMessage.Size = new Size(421, 51);
+            tbMessage.TabIndex = 0;
+            tbMessage.TextChanged += tbMessage_TextChanged;
             // 
-            // panel24
+            // lbMessage
             // 
-            panel24.Controls.Add(label85);
-            panel24.Dock = DockStyle.Fill;
-            panel24.Location = new Point(3, 74);
-            panel24.Name = "panel24";
-            panel24.Size = new Size(481, 73);
-            panel24.TabIndex = 1;
-            // 
-            // label85
-            // 
-            label85.AutoSize = true;
-            label85.ForeColor = Color.Coral;
-            label85.Location = new Point(28, 10);
-            label85.Name = "label85";
-            label85.Size = new Size(94, 28);
-            label85.TabIndex = 0;
-            label85.Text = "Xin chào";
+            lbMessage.FormattingEnabled = true;
+            lbMessage.ItemHeight = 28;
+            lbMessage.Location = new Point(3, 75);
+            lbMessage.Name = "lbMessage";
+            lbMessage.Size = new Size(478, 368);
+            lbMessage.TabIndex = 1;
             // 
             // tableLayoutPanel23
             // 
@@ -1586,10 +1550,10 @@
             // 
             tableLayoutPanel12.ColumnCount = 1;
             tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel12.Controls.Add(textBox4, 0, 3);
-            tableLayoutPanel12.Controls.Add(textBox3, 0, 2);
-            tableLayoutPanel12.Controls.Add(textBox2, 0, 1);
-            tableLayoutPanel12.Controls.Add(textBox1, 0, 0);
+            tableLayoutPanel12.Controls.Add(tbMail, 0, 3);
+            tableLayoutPanel12.Controls.Add(tbLocation, 0, 2);
+            tableLayoutPanel12.Controls.Add(tbPhone, 0, 1);
+            tableLayoutPanel12.Controls.Add(tbName, 0, 0);
             tableLayoutPanel12.Location = new Point(155, 3);
             tableLayoutPanel12.Name = "tableLayoutPanel12";
             tableLayoutPanel12.RowCount = 4;
@@ -1600,46 +1564,46 @@
             tableLayoutPanel12.Size = new Size(316, 202);
             tableLayoutPanel12.TabIndex = 1;
             // 
-            // textBox4
+            // tbMail
             // 
-            textBox4.Anchor = AnchorStyles.None;
-            textBox4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox4.Location = new Point(3, 155);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(310, 44);
-            textBox4.TabIndex = 3;
-            textBox4.Text = "huynhquochuy008@gmail.com";
+            tbMail.Anchor = AnchorStyles.None;
+            tbMail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tbMail.Location = new Point(3, 155);
+            tbMail.Multiline = true;
+            tbMail.Name = "tbMail";
+            tbMail.Size = new Size(310, 44);
+            tbMail.TabIndex = 3;
+            tbMail.Text = "huynhquochuy008@gmail.com";
             // 
-            // textBox3
+            // tbLocation
             // 
-            textBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox3.Location = new Point(3, 109);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(310, 40);
-            textBox3.TabIndex = 2;
-            textBox3.Text = "UIT, Thủ Đức";
+            tbLocation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tbLocation.Location = new Point(3, 109);
+            tbLocation.Multiline = true;
+            tbLocation.Name = "tbLocation";
+            tbLocation.Size = new Size(310, 40);
+            tbLocation.TabIndex = 2;
+            tbLocation.Text = "UIT, Thủ Đức";
             // 
-            // textBox2
+            // tbPhone
             // 
-            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(3, 56);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(310, 45);
-            textBox2.TabIndex = 1;
-            textBox2.Text = "0333333333";
+            tbPhone.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tbPhone.Location = new Point(3, 56);
+            tbPhone.Multiline = true;
+            tbPhone.Name = "tbPhone";
+            tbPhone.Size = new Size(310, 45);
+            tbPhone.TabIndex = 1;
+            tbPhone.Text = "0333333333";
             // 
-            // textBox1
+            // tbName
             // 
-            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(3, 3);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(310, 45);
-            textBox1.TabIndex = 0;
-            textBox1.Text = "Huỳnh Quôc Huy";
+            tbName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tbName.Location = new Point(3, 3);
+            tbName.Multiline = true;
+            tbName.Name = "tbName";
+            tbName.Size = new Size(310, 45);
+            tbName.TabIndex = 0;
+            tbName.Text = "Huỳnh Quôc Huy";
             // 
             // button17
             // 
@@ -1686,6 +1650,7 @@
             tabPage5.TabIndex = 0;
             tabPage5.Text = "Lịch sử";
             tabPage5.UseVisualStyleBackColor = true;
+            tabPage5.Click += tabPage5_Click;
             // 
             // tableLayoutPanel13
             // 
@@ -3246,6 +3211,12 @@
             label81.TabIndex = 9;
             label81.Text = "Hoàn thành";
             // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.ImageScalingSize = new Size(20, 20);
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(61, 4);
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -3296,12 +3267,8 @@
             panel6.PerformLayout();
             tabPage3.ResumeLayout(false);
             tableLayoutPanel24.ResumeLayout(false);
-            panel25.ResumeLayout(false);
-            panel25.PerformLayout();
             panel23.ResumeLayout(false);
             panel23.PerformLayout();
-            panel24.ResumeLayout(false);
-            panel24.PerformLayout();
             tableLayoutPanel23.ResumeLayout(false);
             panel20.ResumeLayout(false);
             panel20.PerformLayout();
@@ -3493,10 +3460,10 @@
         private Label label33;
         private PictureBox pictureBox20;
         private TableLayoutPanel tableLayoutPanel12;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox tbMail;
+        private TextBox tbLocation;
+        private TextBox tbPhone;
+        private TextBox tbName;
         private Button button17;
         private Label label34;
         private TabControl tabControl2;
@@ -3622,11 +3589,9 @@
         private Label label81;
         private TableLayoutPanel tableLayoutPanel24;
         private Panel panel23;
-        private Button button32;
-        private TextBox textBox9;
-        private Panel panel25;
-        private Label label86;
-        private Panel panel24;
-        private Label label85;
+        private Button btnSend;
+        private TextBox tbMessage;
+        private ListBox lbMessage;
+        private ContextMenuStrip contextMenuStrip1;
     }
 }

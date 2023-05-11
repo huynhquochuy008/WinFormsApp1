@@ -87,16 +87,13 @@ namespace WinFormsApp1
         {
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         private void tabPage3_Click(object sender, EventArgs e)
         {
         }
 
         private void tabPage4_Click(object sender, EventArgs e)
         {
+
         }
 
         private void tableLayoutPanel2_Paint_1(object sender, PaintEventArgs e)
@@ -237,6 +234,23 @@ namespace WinFormsApp1
         }
 
         private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            string message = tbMessage.Text.ToString();
+            lbMessage.Items.Add("You: " + message);
+            tbMessage.Text = "";
+        }
+
+        private void tbMessage_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage5_Click(object sender, EventArgs e)
         {
 
         }
